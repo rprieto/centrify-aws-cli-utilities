@@ -81,57 +81,7 @@ In this properties file, if your organization uses a proxy server then mention t
 
 ## Create cacerts.pem
 
-### Option 1
-
-1.  Open your centrify instance in the browser (firefox) e.g. instance.centrify.com
-2.  Click on the lock icon on the left hand side of the URL
-3.  Click on the arrow ">" and "More Information" to view Security information
-4.  Click on View Certificate button.
-5.  In the Certificate Viewer, there are two buttons "General" and "Detail"
-6.  Click on the details and the certificate chain can be seen. (a)leaf certificate - *.instance.centrify.com (b) intermediate certificate - Go Dadday Secure certificate authority - G2 (c) root certificate - Go Daddy Root Certificate authority - G2
-7.  Click on each certificate and save the files in .crt format.
-8.  Open the leaf certificate i.e. *.instance.centrify.com
-9.  Open the intermediate certificate and copy the contents, paste it after the leaf certificate
-10.  Open the root certificate and copy the contents, paste it after the contents.
-11.  Save the file as cacerts_<tenant_name>.pem in the root directory of the script i.e. where CentrifyAWSCLI.py file exists.  [Refer point no 2 in below section]
-
-### Option 2
-
-1.  Run below command on unix
-
-```    
-    openssl s_client -connect your_tenant.centrify.com:443 -showcerts 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cacerts_ your_tenant.pem
-```
-
-2.  Open cacerts_ your_tenant.pem. Copy the following text from `---BEGIN CERTIFICATE----` to `----END CERTIFICATE-----` and append it in the file.
- 
-```
------BEGIN CERTIFICATE-----
-MIIDxTCCAq2gAwIBAgIBADANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMCVVMx
-EDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoT
-EUdvRGFkZHkuY29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRp
-ZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTA5MDkwMTAwMDAwMFoXDTM3MTIzMTIz
-NTk1OVowgYMxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdBcml6b25hMRMwEQYDVQQH
-EwpTY290dHNkYWxlMRowGAYDVQQKExFHb0RhZGR5LmNvbSwgSW5jLjExMC8GA1UE
-AxMoR28gRGFkZHkgUm9vdCBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkgLSBHMjCCASIw
-DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL9xYgjx+lk09xvJGKP3gElY6SKD
-E6bFIEMBO4Tx5oVJnyfq9oQbTqC023CYxzIBsQU+B07u9PpPL1kwIuerGVZr4oAH
-/PMWdYA5UXvl+TW2dE6pjYIT5LY/qQOD+qK+ihVqf94Lw7YZFAXK6sOoBJQ7Rnwy
-DfMAZiLIjWltNowRGLfTshxgtDj6AozO091GB94KPutdfMh8+7ArU6SSYmlRJQVh
-GkSBjCypQ5Yj36w6gZoOKcUcqeldHraenjAKOc7xiID7S13MMuyFYkMlNAJWJwGR
-tDtwKj9useiciAF9n9T521NtYJ2/LOdYq7hfRvzOxBsDPAnrSTFcaUaz4EcCAwEA
-AaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYE
-FDqahQcQZyi27/a9BUFuIMGU2g/eMA0GCSqGSIb3DQEBCwUAA4IBAQCZ21151fmX
-WWcDYfF+OwYxdS2hII5PZYe096acvNjpL9DbWu7PdIxztDhC2gV7+AJ1uP2lsdeu
-9tfeE8tTEH6KRtGX+rcuKxGrkLAngPnon1rpN5+r5N9ss4UXnT3ZJE95kTXWXwTr
-gIOrmgIttRD02JDHBHNA7XIloKmf7J6raBKZV8aPEjoJpL1E/QYVN8Gb5DKj7Tjo
-2GTzLH4U/ALqn83/B2gX2yKQOC16jdFU8WnjXzPKej17CuPKf1855eJ1usV2GDPO
-LPAvTK33sefOT6jEm0pUBsV/fdUID+Ic/n4XuKxe9tQWskMJDE32p2u0mYRlynqI
-4uJEvlz36hz1
------END CERTIFICATE-----
-```
-
-3.  Save the cacerts_ your_tenant.pem in the root directory of the script i.e. where CentrifyAWSCLI.py file exists.  [Refer point no 2 in below section]
+Please see https://developer.centrify.com/v1.2/docs/aws-cli
 
 ## Running the program
 
