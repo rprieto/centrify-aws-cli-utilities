@@ -96,7 +96,9 @@ def client_main():
     for j in range (0, length):
         try:
             appinfo = {}
-            if (("AWS" in apps[j]["TemplateName"] or "Amazon" in apps[j]["TemplateName"]) and apps[j]["WebAppType"] != 'UsernamePassword'):
+            awsName = "AWS" in apps[j]["Name"] or "Amazon" in apps[j]["Name"]
+            awsTemplate = "AWS" in apps[j]["TemplateName"] or "Amazon" in apps[j]["TemplateName"]
+            if ((awsName or awsTemplate) and apps[j]["WebAppType"] != 'UsernamePassword'):
                 appinfo = apps[j]
                 logging.info(appinfo)
                 awsapps.append(appinfo)
