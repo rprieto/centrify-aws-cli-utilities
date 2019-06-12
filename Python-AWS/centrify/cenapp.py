@@ -120,8 +120,8 @@ def choose_role(encoded_saml, appkey):
         selection = 1
         
     role = allroles[selection-1]
-    
-    principle = saml_provider [0]
+    principle = saml_provider[selection-1]
+
     print('You Chose : ', role)
     print('Your SAML Provider : ', principle)
         
